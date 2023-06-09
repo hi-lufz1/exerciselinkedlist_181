@@ -89,7 +89,8 @@ bool CircularLinkedList::listEmpty() {
 	return LAST == NULL;
 }
 bool CircularLinkedList::delNode(int rollno) {
-	Node* fauzi, * latif;
+	Node* fauzi;
+	Node* latif;
 		fauzi = latif = NULL;
 	//Beginning of the list
 	if (search(rollno, &fauzi, &latif) == false)
@@ -101,18 +102,18 @@ bool CircularLinkedList::delNode(int rollno) {
 	LAST->next = latif->next; //Make the next field of LAST point to the successor of current.
 
 	//beetween two node
-	fauzi = LAST->next;
-	latif = LAST->next;
-	while (search(rollno, &fauzi, &latif) == false || fauzi != LAST)
+	fauzi = LAST->next;//Make previous point to the successor of LAST.
+	latif = LAST->next;//Make current point to the successor of LAST.
+	while (search(rollno, &fauzi, &latif) == false || fauzi != LAST) //Repeat steps 4 and 5 until either the node is found, or previous = LAS
 	{
-		fauzi = latif;
-		latif = latif->next;
+		fauzi = latif;//Make previous point to current
+		latif = latif->next;//Make current point to the next node in sequence.
 	}
 
 	//End of the list
 
-	latif = LAST;
-	fauzi = LAST->next;
+	latif = LAST; //. Make current point to LAST.
+	fauzi = LAST->next; //Make previous point to the successor of LAST 
 	while (fauzi->next != LAST) //Repeat step c until the successor of previous becomes LAST
 	{
 		fauzi = fauzi.next;//Make the previous point to the next node in its sequence.
