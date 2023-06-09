@@ -116,7 +116,7 @@ bool CircularLinkedList::delNode(int rollno) {
 	fauzi = LAST->next; //Make previous point to the successor of LAST 
 	while (fauzi->next != LAST) //Repeat step c until the successor of previous becomes LAST
 	{
-		fauzi = fauzi.next;//Make the previous point to the next node in its sequence.
+		fauzi = fauzi->next;//Make the previous point to the next node in its sequence.
 	}
 	fauzi->next = LAST->next;//Make the next field of previous point to the successor of LAST.
 	fauzi = LAST;//Mark previous as LAST.
